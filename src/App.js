@@ -2,29 +2,26 @@ import { useState } from "react";
 
 function App() {
     const [result, setResult] = useState(0);
-    const [result1, setResult1] = useState(0);
-    const [result2, customRatio] = useState(0);
+    const [ratioChange, setRatioChange] = useState(1);
 
     function addRatio() {
-        setResult(result + 1);        
+        setResult(result + parseInt (ratioChange));        
     }
 
     function subtractRatio() {
-        setResult1(result1 - 1);
+        setResult(result - parseInt (ratioChange));
     }
 
-    function subtractRatio() {
-        customRatio();
+    function handleRatioChange(kaķens) {
+        setRatioChange(kaķens.target.value)
     }
 
     return (
         <div>
-            <button onClick={addRatio}>GANG +1 ratio</button>
-    <h1>{result}</h1>
-            <button onClick={subtractRatio}>GANG -1 ratio</button>
-    <h1>{result1}</h1>
-            <button onClick={customRatio}>GANG custom ratio</button>
-    <h1>{result2}</h1>
+        <input type="number" value={ratioChange} onChange={handleRatioChange}></input>
+            <button onClick={addRatio}>GANG +1 ratioChange</button>
+            <button onClick={subtractRatio}>GANG -1 ratioChange</button>
+        <h1>{result}</h1>
         </div>
     );
 }
